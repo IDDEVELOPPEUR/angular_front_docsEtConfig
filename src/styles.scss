@@ -1,0 +1,16 @@
+@import "magasin-variables";
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+#entete{
+  height: $hauteurEntete;
+}
+#contenu{
+  margin-top:$hauteurEntete;
+}
+.titrePage{
+  @extend .h1;
+  @extend .text-secondary;
+  @extend .text-center;
+  @extend .border-bottom;
+
+}
