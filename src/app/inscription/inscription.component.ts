@@ -19,15 +19,16 @@ export class InscriptionComponent {
     adresse:new FormControl('Diamniadio', [Validators.required]),
 
   })
+
 //la fonction inscrire
   inscrire() {
     console.log("Données formulaires :",this.inscriptionForm.value)
     const inscription: Inscription = {
       prenom:this.inscriptionForm.get('prenom')?.value,
-      nom:this.inscriptionForm.get('nom')?.value,
-      email:this.inscriptionForm.get('email')?.value,
-      password:this.inscriptionForm.get('password')?.value,
-      adresse:this.inscriptionForm.get('adresse')?.value,
+      nom : this.inscriptionForm.get('nom')?.value,
+      email : this.inscriptionForm.get('email')?.value,
+      password : this.inscriptionForm.get('password')?.value,
+      adresse : this.inscriptionForm.get('adresse')?.value,
       roles:[],
       droits:[]
     }
