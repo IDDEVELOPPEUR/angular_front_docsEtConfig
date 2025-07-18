@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {Connexion} from '../modeles';
+import {ConnexionRequest} from '../modeles';
+import {ConnexionService} from '../services/connexion.service';
+
 
 @Component({
   selector: 'app-connexion',
@@ -14,19 +16,20 @@ import {Connexion} from '../modeles';
 export class ConnexionComponent {
 connexionForm:FormGroup=new FormGroup({
   email:new FormControl('', [Validators.required, Validators.email]),
-
   password:new FormControl('', [Validators.required]),
 });
+
 //le constructeur pour la connexion
-constructor(){
-}
+constructor(private connexionService:ConnexionService){}
 
   connecter(){
-    console.log("Données formulaires :",this.connexionForm.value)
-    const connexion:Connexion= {
+    console.log("Données de la connexion :",this.connexionForm.value)
+    const connexionRequest:ConnexionRequest= {
       email:this.connexionForm.get('email')?.value,
       password:this.connexionForm.get('password')?.value,
     }
+    console.log("le résultat de connexion: "+connexionRequest);
+
 
   }
 }
