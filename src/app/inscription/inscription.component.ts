@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Inscription} from '../modeles';
+import {InscriptionService} from '../services/inscription.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-inscription',
@@ -20,6 +22,12 @@ export class InscriptionComponent {
 
   })
 
+  //le constructeur
+  constructor(
+    private inscriptionService:InscriptionService,
+    private _router:Router
+  ){}
+
 //la fonction inscrire
   inscrire() {
     console.log("Données formulaires :",this.inscriptionForm.value)
@@ -32,7 +40,19 @@ export class InscriptionComponent {
       roles:[],
       droits:[]
     }
+
     console.log("send to spring",inscription)
+    this.inscriptionService.inscrire(inscription).subscribe({
+      error: (error) => {
+        console.error(error)
+      },
+      complete: () => {
+        console.log("requete executee avec succes !");
+
+        // la redirection vers la page connexion
+        this._router.navigate(['/connexion']);
+      }
+    })
   }
 
   //fonction pour effacer le formulaire

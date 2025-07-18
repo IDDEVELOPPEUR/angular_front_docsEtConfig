@@ -9,3 +9,11 @@ export interface Inscription{
   roles?:string[],
   droits?: string[]
 }
+
+
+
+export interface Connexion{
+
+  email: string,
+  password: string,
+}

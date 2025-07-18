@@ -15,7 +15,7 @@ export class InscriptionService {
     //premiere maniere
     // const url=environment.apiBaseUrl+'/inscription';
     //deuxieme maniere
-    const url=`${environment.apiBaseUrl}/api/v1/inscriptions`;
+    const url=`${environment.apiBaseUrl}/api/v1/inscription`;
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
     return this._http.post<void>(url,inscription,{headers})
   }
