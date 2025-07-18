@@ -1,1 +1,10 @@
-<p>entete works!</p>
+<div>
+
+  <div class="text-white">
+  @if (user) {
+    Bienvenue <span>{{user.prenom}} {{user.nom}}</span>
+  } @else {
+    <a class="text-primary" routerLink="/connexion">Veillez vous connectez</a>
+  }
+  </div>
+</div>

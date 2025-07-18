@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {ConnexionRequest} from '../modeles';
 import {ConnexionService} from '../services/connexion.service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -22,7 +23,10 @@ connexionForm:FormGroup=new FormGroup({
 });
 
 //le constructeur pour la connexion
-constructor(private connexionService:ConnexionService){}
+constructor(
+  private connexionService:ConnexionService,
+  private router:Router
+){}
 
   connecter(){
     console.log("Données de la connexion :",this.connexionForm.value)
@@ -37,6 +41,13 @@ constructor(private connexionService:ConnexionService){}
       next:(result)=>{
         console.log("Connexion reussite, le user est : ",result);
 
+        //localStorage est une table isolée par chaque application web
+        // à une table localStorage permettant de stocker les données sous forme
+        //de clé-valeur ;les clés et les valeurs sont des string !
+        //quand on stocke sur clé existante, son ancienne valeur sera écrasée
+        // pour supprimer une clé, on met localStorage.removeItem(cle)
+        localStorage.setItem("LOGIN_USER",JSON.stringify(result))
+        this.router.navigate(["/magasins"])
       },
       error:(error)=>{
         console.log("erreur ",error);
