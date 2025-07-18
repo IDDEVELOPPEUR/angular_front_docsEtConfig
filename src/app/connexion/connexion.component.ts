@@ -14,6 +14,8 @@ import {ConnexionService} from '../services/connexion.service';
   styleUrl: './connexion.component.scss'
 })
 export class ConnexionComponent {
+
+
 connexionForm:FormGroup=new FormGroup({
   email:new FormControl('', [Validators.required, Validators.email]),
   password:new FormControl('', [Validators.required]),
@@ -28,8 +30,21 @@ constructor(private connexionService:ConnexionService){}
       email:this.connexionForm.get('email')?.value,
       password:this.connexionForm.get('password')?.value,
     }
-    console.log("le résultat de connexion: "+connexionRequest);
+    console.log("donnees de connexion: ",connexionRequest);
 
+    // appel de la methode pour se connecter via spring-boot
+    this.connexionService.connecter(connexionRequest).subscribe({
+      next:(result)=>{
+        console.log("Connexion reussite, le user est : ",result);
 
+      },
+      error:(error)=>{
+        console.log("erreur ",error);
+      },
+      complete:()=>{
+        console.log("Fin requete sans erreur !");
+      }
+    });
+    console.log("Requête envoyée,attente de réponse...!")
   }
 }

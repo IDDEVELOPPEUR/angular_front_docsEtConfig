@@ -14,7 +14,7 @@ export class ConnexionService {
 //methode de connexion
   connecter(connexion:ConnexionRequest):Observable<LoginUser>
   {
-    const url=`${environment.apiBaseUrl}/api/v1/connexion`;
+    const url=`${environment.apiBaseUrl}/api/v1/auth/login`;
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
     return this._http.post<LoginUser>(url,connexion,{headers})
   };
