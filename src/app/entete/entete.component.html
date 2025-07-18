@@ -1,10 +1,10 @@
-<div>
-
+<div class="">
   <div class="text-white">
   @if (user) {
     Bienvenue <span>{{user.prenom}} {{user.nom}}</span>
+    <button class="btn btn-outline-danger" (click)="deconnecter()">Deconnexion</button>
   } @else {
-    <a class="text-primary" routerLink="/connexion">Veillez vous connectez</a>
+    <a class="text-white" routerLink="/connexion">Veillez vous connectez</a>
   }
   </div>
 </div>

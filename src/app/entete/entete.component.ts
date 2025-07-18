@@ -19,4 +19,8 @@ export class EnteteComponent implements OnInit {
       this.user=JSON.parse(userTmp);
     }
   }
+
+  deconnecter() {
+    localStorage.clear()
+  }
 }
