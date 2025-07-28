@@ -1,0 +1,20 @@
+<div class="row ">
+
+  @if (magasin) {
+
+    <div class="col border ">{{numLigne}}</div>
+    <div class="col border ">{{magasin.id}}</div>
+    <div class="col border ">{{magasin.nom}}</div>
+    <div class="col border ">{{magasin.adresse}}</div>
+    @if (detail) {
+      <div class="col border ">{{magasin.telephone}}</div>
+      <div class="col border ">{{magasin.description}}</div>
+      <div class="col border ">{{magasin.createurId}}</div>
+    }
+  }@else{
+    <div class="col-12 border ">
+      Pas de magasin
+    </div>
+  }
+</div>
+

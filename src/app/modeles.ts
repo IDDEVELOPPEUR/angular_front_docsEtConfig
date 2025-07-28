@@ -29,3 +29,12 @@ export interface LoginUser{
   dateExpiration: Date,
   notBefore: Date
 }
+//le model du magasin
+export interface Magasin {
+  id?: number,
+  nom: string,
+  adresse: string,
+  telephone?: string,
+  description?: string,
+  createurId?: number
+}

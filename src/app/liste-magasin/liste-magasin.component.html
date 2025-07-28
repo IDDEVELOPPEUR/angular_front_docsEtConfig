@@ -3,5 +3,33 @@
     <br>
     <h1 class="bg-success text-white text-center ">BIENVENUE DANS ISEP_SHOP</h1>
   </div>
+
   <br>
+
 </div>
+@if (afficheDetail) {
+<a class="btn btn-secondary  mx-1 my-1 text-white " (click)="cacherDetail()">Cacher détails</a>
+}@else{
+
+<a class="btn btn-secondary  mx-1 my-1 text-white " (click)="afficherDetail()">Voir détails</a>
+}
+  <div class="row bg-primary text-light h3 ">
+    <div class="col border">#</div>
+    <div class="col border">Id</div>
+    <div class="col border">Nom</div>
+    <div class="col border">Adresse</div>
+    @if (afficheDetail) {
+      <div class="col">Téléphone</div>
+      <div class="col">Description</div>
+      <div class="col">Créé par</div>
+    }
+
+  </div>
+  @for (magasin of magasins; track magasin.id;let i=$index;let pair=$even) {
+    <app-magasin-item
+      [magasin]="magasin"
+      [numLigne]="i"
+      [pair]="pair"
+      [detail]="afficheDetail" ></app-magasin-item>
+  }
+
